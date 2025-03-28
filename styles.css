@@ -1,45 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>drummity</h1>
-            <p class="tagline">Just a person who loves creating.</p>
-        </header>
-        <main>
-            <section class="about">
-                <h2>About Me</h2>
-                <p>Hi, I'm drummity! I enjoy building websites, writing, and exploring creative ideas. This is my personal space where I share my work and thoughts.</p>
-                <button onclick="toggleBio()">Show More</button>
-                <div id="bioDetails">
-                    <p>I'm passionate about technology and the art of problem-solving. I like exploring new coding languages and frameworks to keep my skills sharp. In my free time, I love photography, reading, and traveling.</p>
-                </div>
-            </section>
-            <section class="links">
-                <h2>Find Me</h2>
-                <ul>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                </ul>
-            </section>
-        </main>
-        <footer>
-            <p>© 2025 drummity</p>
-        </footer>
-    </div>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <script>
-        function toggleBio() {
-            const bio = document.getElementById('bioDetails');
-            bio.style.display = bio.style.display === 'block' ? 'none' : 'block';
-        }
-    </script>
-</body>
-</html>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #6200EE;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s ease;
+    transform: scale(1);
+}
+
+.custom-cursor.interactive {
+    transform: scale(1.5);
+}
+
+h1 {
+    font-size: 3rem;
+    color: #F4F4F9;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+main {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Button Hover Effects */
+button {
+    background: #6200EE;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #3700B3;
+    transform: scale(1.05);
+}
+
+/* Smooth Hover for Links and Paragraphs */
+a, .about p {
+    transition: color 0.3s ease;
+}
+
+a:hover, .about p:hover {
+    color: #6200EE;
+}
+
+/* Toggle Background Button */
+#toggleBackgroundBtn {
+    background: #3700B3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+#toggleBackgroundBtn:hover {
+    background: #6200EE;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        width: 80%;
+        padding: 20px;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
