@@ -11,11 +11,16 @@
         <header>
             <h1>drummity</h1>
             <p class="tagline">Just a person who loves creating.</p>
+            <button id="toggleBackgroundBtn" onclick="toggleBackground()">Toggle Background</button>
         </header>
         <main>
             <section class="about">
                 <h2>About Me</h2>
-                <p>Hi, I'm drummity I enjoy building websites, writing, and exploring creative ideas. This is my personal space where I share my work and thoughts.</p>
+                <p>Hi, I'm drummity! I enjoy building websites, writing, and exploring creative ideas. This is my personal space where I share my work and thoughts.</p>
+                <button onclick="toggleBio()">Show More</button>
+                <div id="bioDetails">
+                    <p>I'm passionate about technology and the art of problem-solving. I like exploring new coding languages and frameworks to keep my skills sharp. In my free time, I love photography, reading, and traveling.</p>
+                </div>
             </section>
             <section class="links">
                 <h2>Find Me</h2>
@@ -30,5 +35,62 @@
             <p>© 2025 drummity</p>
         </footer>
     </div>
+
+    <script>
+        // Toggle background mode (light/dark)
+        let isDark = false;
+        function toggleBackground() {
+            const body = document.body;
+            isDark = !isDark;
+            body.style.transition = 'background-color 0.5s ease';
+            if (isDark) {
+                body.style.backgroundColor = '#121212';
+                body.style.color = '#fff';
+            } else {
+                body.style.backgroundColor = '#fff';
+                body.style.color = '#000';
+            }
+            playSound('background-toggle');
+        }
+
+        // Toggle bio visibility
+        function toggleBio() {
+            const bio = document.getElementById('bioDetails');
+            bio.style.display = bio.style.display === 'block' ? 'none' : 'block';
+            playSound('toggle-bio');
+        }
+
+        // Play sound on certain interactions
+        function playSound(type) {
+            let sound;
+            if (type === 'background-toggle') {
+                sound = new Audio('toggle-sound.mp3'); // Add your own sound here
+            } else if (type === 'toggle-bio') {
+                sound = new Audio('bio-toggle.mp3'); // Add your own sound here
+            }
+            sound.play();
+        }
+
+        // Custom cursor effect
+        const customCursor = document.createElement('div');
+        customCursor.classList.add('custom-cursor');
+        document.body.appendChild(customCursor);
+
+        document.body.addEventListener('mousemove', (e) => {
+            customCursor.style.left = `${e.pageX - 10}px`;
+            customCursor.style.top = `${e.pageY - 10}px`;
+        });
+
+        // Change cursor style on hover
+        const interactiveElements = document.querySelectorAll('a, button, .about p');
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                customCursor.classList.add('interactive');
+            });
+            element.addEventListener('mouseleave', () => {
+                customCursor.classList.remove('interactive');
+            });
+        });
+    </script>
 </body>
 </html>
